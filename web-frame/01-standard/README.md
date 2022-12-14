@@ -151,7 +151,7 @@ func main() {
 }
 ```
 
-spirit 框架的设计以及 API 均参考了 gin。使用 New() 创建 gee 的实例，使用 GET()方法添加路由，最后使用 Run() 启动 Web 服务。这里的路由，只是静态路由，不支持 /hello/:name 这样的动态路由，动态路由我们将在下一次实现。
+spirit 框架的设计以及 API 均参考了 gin。使用 New() 创建 spirit 的实例，使用 GET()方法添加路由，最后使用 Run() 启动 Web 服务。这里的路由，只是静态路由，不支持 /hello/:name 这样的动态路由，动态路由我们将在下一次实现。
 
 ## spirit.go
 
@@ -165,7 +165,7 @@ import (
 	"net/http"
 )
 
-// HandlerFunc defines the request handler used by gee
+// HandlerFunc defines the request handler used by spirit
 type HandlerFunc func(http.ResponseWriter, *http.Request)
 
 // Engine implement the interface of ServeHTTP
@@ -173,7 +173,7 @@ type Engine struct {
 	router map[string]HandlerFunc
 }
 
-// New is the constructor of gee.Engine
+// New is the constructor of spirit.Engine
 func New() *Engine {
 	return &Engine{router: make(map[string]HandlerFunc)}
 }
@@ -226,5 +226,5 @@ curl http://localhost:9999/world
 404 NOT FOUND: /world
 ```
 
-至此，整个Gee框架的原型已经出来了。实现了路由映射表，提供了用户注册静态路由的方法，包装了启动服务的函数。当然，到目前为止，我们还没有实现比 net/http 标准库更强大的能力，不用担心，很快就可以将动态路由、中间件等功能添加上去了。
+至此，整个 Spirit 框架的原型已经出来了。实现了路由映射表，提供了用户注册静态路由的方法，包装了启动服务的函数。当然，到目前为止，我们还没有实现比 net/http 标准库更强大的能力，不用担心，很快就可以将动态路由、中间件等功能添加上去了。
 
