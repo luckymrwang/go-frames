@@ -34,7 +34,7 @@ func helloHandler(w http.ResponseWriter, req *http.Request) {
 
 用 curl 这个工具测试一下，将会得到如下的结果。
 
-```
+```js
 $ curl http://localhost:9999/
 URL.Path = "/"
 $ curl http://localhost:9999/hello
@@ -109,6 +109,8 @@ go.mod
 
 ## go.mod
 
+[01-standard/base3/go.mod](/web-frame/01-standard/base3/go.mod)
+
 ```go
 module example
 
@@ -120,6 +122,8 @@ replace spirit => ./spirit
 ```
 
 ## main.go
+
+[01-standard/base3/main.go](/web-frame/01-standard/base3/main.go)
 
 ```go
 package main
@@ -150,6 +154,8 @@ func main() {
 spirit 框架的设计以及 API 均参考了 gin。使用 New() 创建 gee 的实例，使用 GET()方法添加路由，最后使用 Run() 启动 Web 服务。这里的路由，只是静态路由，不支持 /hello/:name 这样的动态路由，动态路由我们将在下一次实现。
 
 ## spirit.go
+
+[01-standard/base3/spirit/spirit.go](/web-frame/01-standard/spirit/spirit.go)
 
 ```go
 package spirit
@@ -210,7 +216,7 @@ func (engine *Engine) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 
 执行 `go run main.go`，再用 curl 工具访问，结果与最开始的一致。
 
-```
+```js
 $ curl http://localhost:9999/
 URL.Path = "/"
 $ curl http://localhost:9999/hello
